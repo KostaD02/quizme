@@ -1,0 +1,18 @@
+<nav>
+  <input type="checkbox" id="check" />
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <label routerLink="/" class="logo">Quiz Me</label>
+  <ul *ngIf="isAuthorized">
+    <li>
+      <a href="#" routerLink="/" [ngClass]="{ active: urlString == '/' }"
+        >Home</a
+      >
+    </li>
+  </ul>
+  <ul *ngIf="!isAuthorized">
+    <li><a href="#" routerLink="/login">Log in</a></li>
+    <li><a href="#" routerLink="/register">Register</a></li>
+  </ul>
+</nav>
