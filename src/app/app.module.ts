@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,9 @@ import { environment } from './../environments/environment.prod';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './module/material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,9 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     provideFirestore(() => getFirestore()),
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    //MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

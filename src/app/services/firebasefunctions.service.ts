@@ -22,7 +22,7 @@ export class FirebasefunctionsService {
     );
     return collectionData(usersRef, { idField: 'id' }) as Observable<User[]>;
   }
-  getUsersId(id: string) {
+  getUsersId(id: any) {
     const usersRef = doc(
       this.fireStore,
       `${environment.firebaseCollections.users}/${id}`

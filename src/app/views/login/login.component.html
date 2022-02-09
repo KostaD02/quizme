@@ -1,1 +1,36 @@
-<p>login works!</p>
+<section class="auth">
+  <form #myForm="ngForm">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        name="email"
+        ngModel
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        ngModel
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+      />
+    </div>
+    <button
+      value="Continue"
+      (click)="onSubmit(myForm)"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</section>
