@@ -9,6 +9,7 @@
       <a href="#" routerLink="/" [ngClass]="{ active: urlString == '/' }"
         >Home</a
       >
+      <a href="#" (click)="logOut()">Log Out</a>
     </li>
   </ul>
   <ul *ngIf="!isAuthorized">

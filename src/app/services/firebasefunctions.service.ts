@@ -45,7 +45,6 @@ export class FirebasefunctionsService {
   }
   updateUser(
     user: User,
-    image: string = '',
     userType: string = 'guest',
     approved: boolean = false
   ) {
@@ -57,10 +56,8 @@ export class FirebasefunctionsService {
       name: user.name,
       lastname: user.lastname,
       email: user.email,
-      nickname: user.nickname,
       password: user.password,
       userType: userType,
-      image: image,
       approved: approved,
     });
   }

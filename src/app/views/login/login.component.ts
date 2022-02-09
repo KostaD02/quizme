@@ -10,6 +10,7 @@ import { SharedFunctionService } from 'src/app/services/sharedfunction.service';
 })
 export class LoginComponent implements OnInit {
   usersArray: any = [];
+  disabled: boolean = false;
   constructor(
     private sharedFuncs: SharedFunctionService,
     private firebaseFunctions: FirebasefunctionsService,
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
       validPassword = false;
     });
     if (validEmail && validPassword) {
+      this.disabled = true;
       this.sharedFuncs.displayToast(
         'Authorized successfully',
         'success',

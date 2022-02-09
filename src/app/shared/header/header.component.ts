@@ -27,4 +27,8 @@ export class HeaderComponent implements OnInit {
     }
   }
   ngOnInit(): void {}
+  logOut() {
+    sessionStorage.clear();
+    location.reload();
+  }
 }

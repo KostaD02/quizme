@@ -1,1 +1,67 @@
-<p>register works!</p>
+<section class="auth">
+  <form #myForm="ngForm">
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="nameHelp"
+        name="name"
+        ngModel
+      />
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        type="lastName"
+        class="form-control"
+        id="lastName"
+        aria-describedby="lastNameHelp"
+        name="lastName"
+        ngModel
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        name="email"
+        ngModel
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        ngModel
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="passwordRepeat" class="form-label">Repeat Password</label>
+      <input
+        ngModel
+        type="password"
+        class="form-control"
+        id="passwordRepeat"
+        name="passwordRepeat"
+      />
+    </div>
+    <button
+      value="Continue"
+      (click)="onSubmit(myForm)"
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="disabled"
+    >
+      Submit
+    </button>
+  </form>
+</section>

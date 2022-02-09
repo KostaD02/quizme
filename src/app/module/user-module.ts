@@ -4,8 +4,6 @@ export interface User {
   name: string;
   lastname: string;
   email: string;
-  nickname: string;
   password: string;
-  image: string;
   approved: boolean;
 }
