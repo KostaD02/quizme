@@ -13,6 +13,6 @@ export const environment = {
   firebaseCollections: {
     users: 'user-collection',
     helpMessages: 'users-helps-messages',
-    projects: 'quiz-collection',
+    quiz: 'quiz-collection',
   },
 };

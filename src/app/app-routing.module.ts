@@ -4,11 +4,15 @@ import { HomepageComponent } from './views/homepage/homepage.component';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 import { NotfoundComponent } from './views/notfound/notfound.component';
+import { CreatequizComponent } from './views/createquiz/createquiz.component';
+import { ShowquizComponent } from './views/showquiz/showquiz.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'create_quiz', component: CreatequizComponent },
+  { path: 'show_quiz/:key', component: ShowquizComponent },
   { path: '404', component: NotfoundComponent },
   { path: '**', pathMatch: 'full', component: NotfoundComponent },
 ];

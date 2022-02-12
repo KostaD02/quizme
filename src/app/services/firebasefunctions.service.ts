@@ -61,4 +61,32 @@ export class FirebasefunctionsService {
       approved: approved,
     });
   }
+  getQuiz() {
+    const quizRef = collection(
+      this.fireStore,
+      environment.firebaseCollections.quiz
+    );
+    return collectionData(quizRef, { idField: 'id' }) as Observable<User[]>;
+  }
+  getQuizId(id: any) {
+    const quizRef = doc(
+      this.fireStore,
+      `${environment.firebaseCollections.quiz}/${id}`
+    );
+    return docData(quizRef, { idField: 'id' }) as Observable<User[]>;
+  }
+  createQuiz(data: any) {
+    const quizRef = collection(
+      this.fireStore,
+      environment.firebaseCollections.quiz
+    );
+    return addDoc(quizRef, data);
+  }
+  deleteQuiz(data: any) {
+    const quizRef = doc(
+      this.fireStore,
+      `${environment.firebaseCollections.quiz}/${data.id}`
+    );
+    return deleteDoc(quizRef);
+  }
 }

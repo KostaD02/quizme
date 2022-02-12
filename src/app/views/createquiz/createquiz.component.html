@@ -1,0 +1,226 @@
+<app-rotate-phone></app-rotate-phone>
+<section>
+  <aside class="top">
+    <aside class="top_top">
+      <p [ngClass]="{ start: !partOne, done: partOne }">Getting start</p>
+      <p [ngClass]="{ start: partTwo, done: partThree }">Adding questions</p>
+      <p [ngClass]="{ start: partThree, done: submitPart }">Submiting quiz</p>
+    </aside>
+    <aside class="top_bottom">
+      <mat-progress-bar
+        class="fullWidth"
+        mode="determinate"
+        [value]="value"
+      ></mat-progress-bar>
+    </aside>
+  </aside>
+  <aside class="bottom">
+    <div class="partOne" [ngClass]="{ hide: successOne }">
+      <form #myForm="ngForm">
+        <article>
+          <mat-form-field class="full">
+            <input
+              matInput
+              placeholder="Quiz name"
+              ngModel
+              name="quiz_name"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full">
+            <input
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              required
+              matInput
+              placeholder="Your email"
+              ngModel
+              name="email"
+            />
+          </mat-form-field>
+          <div>
+            <button (click)="uploadPhoto()" mat-raised-button color="warn">
+              Upload Quiz Image
+            </button>
+          </div>
+        </article>
+        <aside>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter quiz active time</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input
+                required
+                name="startDate"
+                matStartDate
+                placeholder="Start date"
+                ngModel
+              />
+              <input
+                ngModel
+                required
+                name="endDate"
+                matEndDate
+                placeholder="End date"
+              />
+            </mat-date-range-input>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <p>If image isn't uploaded it will be choosed by default</p>
+        </aside>
+        <div>
+          <button
+            class="next"
+            (click)="submitPartOne(myForm)"
+            mat-raised-button
+            color="primary"
+            [disabled]="!myForm.valid"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+    <div
+      class="partTwo"
+      [ngClass]="{ hide: !successOne, hideForSubmit: successTwo }"
+    >
+      <form [formGroup]="question">
+        <div class="topArea">
+          <h3>Add as many question u want (at least one)</h3>
+          <button mat-raised-button color="primary" (click)="addQuestions()">
+            Add question
+          </button>
+        </div>
+        <hr class="clearMargin" />
+        <div formArrayName="questions" class="formArray">
+          <div
+            *ngFor="let question of questions.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="center">
+              <label>#{{ i + 1 }} </label>
+              <mat-form-field class="center">
+                <input
+                  matInput
+                  placeholder="Question"
+                  formControlName="question"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Correct Answer</mat-label>
+                <mat-select
+                  matNativeControl
+                  required
+                  formControlName="correctAnswer"
+                >
+                  <mat-option value="A"> A </mat-option>
+                  <mat-option value="B"> B </mat-option>
+                  <mat-option value="C"> C </mat-option>
+                  <mat-option value="D"> D </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="deleteQuestion(i)"
+              >
+                Delete question
+              </button>
+            </div>
+            <div class="spaceBetween">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="First Answer"
+                  formControlName="answerA"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Second Answer"
+                  formControlName="answerB"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Third Answer"
+                  formControlName="answerC"
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Forth Answer"
+                  formControlName="answerD"
+                />
+              </mat-form-field>
+            </div>
+            <hr />
+          </div>
+          <div>
+            <button
+              class="next"
+              (click)="submitPartTwo(question)"
+              mat-raised-button
+              color="primary"
+              [disabled]="!question.valid"
+            >
+              Submit Quiz Questions
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="final" class="partThree">
+      <h3>Summary :</h3>
+      <p><b>Quiz Name</b> : {{ quizDetail[0].quiz_name }}</p>
+      <p><b>Your Email</b> : {{ quizDetail[0].email }}</p>
+      <p><b>Start Date</b> : {{ quizDetail[0].date[0] }}</p>
+      <p><b>End Date</b> : {{ quizDetail[0].date[1] }}</p>
+      <p><b>Questions</b> : {{ quizDetail[1].length }}</p>
+      <div class="ready">
+        <p>If every details is right you can upload your quiz</p>
+        <button
+          [disabled]="startedUpload"
+          (click)="startUpload()"
+          mat-raised-button
+          color="primary"
+        >
+          Upload
+        </button>
+      </div>
+      <div class="ready">
+        <p>If you reset your quiz</p>
+        <button
+          [disabled]="startedUpload"
+          (click)="reset()"
+          mat-raised-button
+          color="warn"
+        >
+          Reset
+        </button>
+      </div>
+      <hr />
+      <div class="pre-diplayLink" *ngIf="showSpiner && startedUpload">
+        <mat-spinner></mat-spinner>
+        <p>Generating link ...</p>
+      </div>
+      <div class="diplayLink" *ngIf="!showSpiner">
+        <p id="copy">
+          Generated link for this quiz : <span>{{ link }}</span>
+        </p>
+        <button (click)="copy()" mat-raised-button color="primary">
+          Copy link
+        </button>
+      </div>
+    </div>
+  </aside>
+</section>

@@ -1,0 +1,156 @@
+section {
+  width: 70vw;
+  padding: 30px;
+  margin: 100px auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+section aside {
+  width: 100%;
+}
+section .top {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+section .top aside {
+  height: min-content;
+  width: 100%;
+}
+section .top .top_bottom {
+  width: 100%;
+}
+.fullWidth {
+  width: 100%;
+}
+section .top .top_bottom p {
+  margin: 0px;
+  width: min-content;
+}
+
+section .top .top_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.start {
+  color: #0082e6;
+  font-weight: bold;
+}
+.done {
+  color: green;
+  font-weight: bold;
+}
+
+section .bottom .partOne form article {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+}
+
+section .bottom .partOne form article button {
+  height: 40px;
+  width: 80%;
+  float: right;
+  margin-top: 10px;
+}
+
+section .bottom .partOne form aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section .bottom .next {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+section .bottom .partTwo form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+section .bottom .partTwo form .topArea {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+section .bottom .partTwo form .topArea h3 {
+  margin: 0px;
+}
+
+section .bottom {
+  overflow-y: scroll;
+  max-height: 550px;
+}
+
+section .bottom .partTwo form .formArray .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.clearMargin {
+  margin: 0px;
+}
+section .bottom .partTwo form .formArray .spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+.hideForSubmit {
+  display: none;
+}
+
+section .bottom .partThree .ready {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+section .bottom .partThree .ready p {
+  margin: 0px;
+}
+
+.pre-diplayLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 25px;
+}
+
+.pre-diplayLink p {
+  margin: 0px;
+}
+
+.diplayLink {
+  font-size: 15px;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.diplayLink span {
+  color: green;
+}
+
+@media (max-width: 1000px) {
+  section {
+    width: 98%;
+    margin-top: 50px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    max-height: 260px !important;
+  }
+}

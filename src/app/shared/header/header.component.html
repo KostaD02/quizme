@@ -6,11 +6,15 @@
   <label routerLink="/" class="logo">Quiz Me</label>
   <ul *ngIf="isAuthorized">
     <li>
-      <a href="#" routerLink="/" [ngClass]="{ active: urlString == '/' }"
-        >Home</a
-      >
-      <a href="#" (click)="logOut()">Log Out</a>
+      <a href="#" routerLink="/">Home</a>
     </li>
+    <li>
+      <a href="#" routerLink="/create_quiz">Create quiz</a>
+    </li>
+    <li>
+      <a href="#" [routerLink]="['/show_quiz', key]">Show my quizzes</a>
+    </li>
+    <li><a href="#" (click)="logOut()">Log Out</a></li>
   </ul>
   <ul *ngIf="!isAuthorized">
     <li><a href="#" routerLink="/login">Log in</a></li>

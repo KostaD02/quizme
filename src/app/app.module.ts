@@ -17,6 +17,9 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material.module';
+import { CreatequizComponent } from './views/createquiz/createquiz.component';
+import { ShowquizComponent } from './views/showquiz/showquiz.component';
+import { RotatePhoneComponent } from './shared/rotate-phone/rotate-phone.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { MaterialModule } from './module/material.module';
     RegisterComponent,
     HeaderComponent,
     LoaderComponent,
+    CreatequizComponent,
+    ShowquizComponent,
+    RotatePhoneComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { MaterialModule } from './module/material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    //MaterialModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

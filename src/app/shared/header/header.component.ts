@@ -10,8 +10,8 @@ import { SharedFunctionService } from 'src/app/services/sharedfunction.service';
 })
 export class HeaderComponent implements OnInit {
   isAuthorized: boolean = false;
-  urlString: string = '/';
   user: any;
+  key: string = '';
   constructor(
     private router: Router,
     private firebaseFunctions: FirebasefunctionsService,
@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
         this.user = element;
       });
       this.isAuthorized = true;
+      this.key = id;
     }
   }
   ngOnInit(): void {}
