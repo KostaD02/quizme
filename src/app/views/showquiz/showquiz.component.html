@@ -1,1 +1,33 @@
-<p>showquiz works!</p>
+<div *ngIf="!loader">
+  <app-loader></app-loader>
+</div>
+<section *ngIf="loader">
+  <div class="cards">
+    <div *ngFor="let item of quizArray; let i = index" class="card">
+      <mat-card>
+        <mat-card-header class="centerText">
+          <mat-card-title>{{ item.quizInfo.quiz_name }}</mat-card-title>
+        </mat-card-header>
+        <img
+          mat-card-image
+          [src]="item.quizInfo.imgSrc"
+          alt="Background photo"
+        />
+        <mat-card-content>
+          <p><b>Questions Count : </b> {{ item.questions.length }}</p>
+          <p><b>Start Date : </b> {{ item.quizInfo.date[0] }}}</p>
+          <p><b>End Date : </b> {{ item.quizInfo.date[1] }}}</p>
+        </mat-card-content>
+        <mat-card-actions class="displayButtons">
+          <button (click)="view(item.id)" mat-button color="primary">
+            VIEW
+          </button>
+          <button (click)="delete(item)" mat-button color="warn">DELETE</button>
+          <button (click)="share(item.id)" mat-button color="accent">
+            SHARE
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</section>

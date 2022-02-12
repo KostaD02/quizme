@@ -34,6 +34,7 @@ export class CreatequizComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.sharedFunc.isUserAuth();
     this.question = this.fb.group({
       questions: this.fb.array([]),
     });

@@ -1,0 +1,39 @@
+.card {
+  width: 30%;
+}
+section {
+  height: 100%;
+}
+
+section .cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  row-gap: 50px;
+  gap: 3.33%;
+  padding: 50px 0px 150px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+section .displayButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+section .centerText {
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 40%;
+  }
+}

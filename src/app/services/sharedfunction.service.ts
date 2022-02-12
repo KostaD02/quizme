@@ -29,8 +29,10 @@ export class SharedFunctionService {
     if (id) {
       if (currentURL == 'login' || currentURL == 'register') {
         this.router.navigateByUrl('/');
-      } else {
-        //list
+      }
+    } else {
+      if (currentURL == 'create_quiz' || currentURL == 'show_quiz') {
+        this.router.navigateByUrl('/');
       }
     }
   }
