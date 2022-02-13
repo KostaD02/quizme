@@ -89,4 +89,17 @@ export class FirebasefunctionsService {
     );
     return deleteDoc(quizRef);
   }
+  upadteQuiz(data: any) {
+    const quizRef = doc(
+      this.fireStore,
+      `${environment.firebaseCollections.quiz}/${data.id}`
+    );
+    return updateDoc(quizRef, {
+      questions: data.questions,
+      quizInfo: data.quizInfo,
+      quiz_name: data.quiz_name,
+      uploader_id: data.uploader_id,
+      answeredQuiz: data.answeredQuiz,
+    });
+  }
 }

@@ -13,7 +13,7 @@ export class ShowquizComponent implements OnInit {
   quizArray: any = [];
   loader: boolean = false;
   sessinId: any;
-  baseUrl = 'localhost:4200/';
+  baseUrl = this.sharedFunc.getBaseURL();
   constructor(
     private firebaseFunctions: FirebasefunctionsService,
     private router: Router,
@@ -47,7 +47,7 @@ export class ShowquizComponent implements OnInit {
   }
 
   view(id: any) {
-    this.router.navigateByUrl(this.sessinId + '/' + id);
+    this.router.navigateByUrl('/show_quiz/' + this.sessinId + '/' + id);
   }
 
   delete(item: any) {
@@ -70,7 +70,7 @@ export class ShowquizComponent implements OnInit {
     });
   }
   async share(id: any) {
-    let link = this.baseUrl + this.sessinId + '/' + id;
+    let link = this.baseUrl + '/show_quiz/' + this.sessinId + '/' + id;
     try {
       const toCopy = link;
       await navigator.clipboard.writeText(toCopy);

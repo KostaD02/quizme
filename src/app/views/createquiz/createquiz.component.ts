@@ -135,7 +135,7 @@ export class CreatequizComponent implements OnInit {
       quizInfo: this.quizDetail[0],
       questions: this.quizDetail[1],
     });
-    let baseUrl = 'localhost:4200/';
+    let baseUrl = this.sharedFunc.getBaseURL();
     let quiz = { id: 'temp' };
     setTimeout(() => {
       this.firebaseFunc.getQuiz().subscribe((element: any) => {
@@ -152,7 +152,8 @@ export class CreatequizComponent implements OnInit {
     }, 1500);
     setTimeout(() => {
       if (counter == 1) {
-        this.link = baseUrl + this.quizDetail[0].user_id + '/' + quiz.id;
+        this.link =
+          baseUrl + 'show_quiz/' + this.quizDetail[0].user_id + '/' + quiz.id;
         this.submitPart = true;
         this.showSpiner = false;
         this.value += 10;
@@ -160,7 +161,7 @@ export class CreatequizComponent implements OnInit {
           'Auto redirect in 10 seconds',
           'info',
           'blue',
-          100000
+          10000
         );
         setTimeout(() => {
           this.router.navigateByUrl(

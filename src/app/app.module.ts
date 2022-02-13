@@ -20,6 +20,7 @@ import { MaterialModule } from './module/material.module';
 import { CreatequizComponent } from './views/createquiz/createquiz.component';
 import { ShowquizComponent } from './views/showquiz/showquiz.component';
 import { RotatePhoneComponent } from './shared/rotate-phone/rotate-phone.component';
+import { DisplayQuizComponent } from './views/display-quiz/display-quiz.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RotatePhoneComponent } from './shared/rotate-phone/rotate-phone.compone
     CreatequizComponent,
     ShowquizComponent,
     RotatePhoneComponent,
+    DisplayQuizComponent,
   ],
   imports: [
     BrowserModule,

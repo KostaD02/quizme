@@ -1,0 +1,138 @@
+<section *ngIf="!loader">
+  <app-loader></app-loader>
+</section>
+<section *ngIf="loader">
+  <div *ngIf="isEmpty">
+    <p>There is no Quiz</p>
+  </div>
+  <div *ngIf="!isEmpty">
+    <div *ngIf="isOwner">
+      <p>Owner</p>
+    </div>
+    <div *ngIf="!isOwner">
+      <section *ngIf="available">
+        <p>Time passed</p>
+      </section>
+      <section *ngIf="!available">
+        <article *ngIf="alreadyAnswered">
+          <p>Already answered</p>
+        </article>
+        <article *ngIf="!alreadyAnswered && !result">
+          <section class="displayForm">
+            <aside class="top">
+              <aside class="left">
+                <img
+                  [src]="quizDetail.quizInfo.imgSrc"
+                  alt="background image"
+                />
+              </aside>
+              <aside class="right">
+                <div>
+                  <h1>
+                    Quiz name :
+                    <span class="activeColor">
+                      {{ quizDetail.quizInfo.quiz_name }}</span
+                    >
+                  </h1>
+                  <ul>
+                    <li><b>Quiz started : </b> {{ date[0] }}</li>
+                    <li><b>Quiz will end : </b> {{ date[1] }}</li>
+                    <li><b>Be honest on answers</b></li>
+                    <li><b>You can upload only once</b></li>
+                  </ul>
+                  <p></p>
+                </div>
+              </aside>
+            </aside>
+            <aside class="bottom">
+              <hr />
+              <form #myForm="ngForm">
+                <article class="contactInfo">
+                  <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input matInput required name="name" ngModel />
+                  </mat-form-field>
+                  <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Last name</mat-label>
+                    <input matInput required name="lastname" ngModel />
+                  </mat-form-field>
+                  <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      matInput
+                      name="email"
+                      required
+                      ngModel
+                    />
+                  </mat-form-field>
+                </article>
+                <hr />
+                <div class="generatQuestions">
+                  <div
+                    class="question"
+                    *ngFor="let question of quizDetail.questions; let i = index"
+                  >
+                    <h3>{{ question.question }}</h3>
+                    <mat-radio-group
+                      class="radio-group"
+                      ngModel
+                      name="{{ i }}"
+                      required
+                    >
+                      <mat-radio-button value="A">
+                        {{ question.answerA }}
+                      </mat-radio-button>
+                      <mat-radio-button value="B">
+                        {{ question.answerB }}
+                      </mat-radio-button>
+                      <mat-radio-button value="C">
+                        {{ question.answerC }}
+                      </mat-radio-button>
+                      <mat-radio-button value="D">
+                        {{ question.answerD }}
+                      </mat-radio-button>
+                    </mat-radio-group>
+                    <hr />
+                  </div>
+                </div>
+                <div class="button">
+                  <button
+                    (click)="onSubmit(myForm)"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="!myForm.valid || hold"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </aside>
+          </section>
+        </article>
+        <article *ngIf="!alreadyAnswered && result">
+          <section class="answered">
+            <div class="mark" *ngIf="!generateMark">
+              <mat-spinner></mat-spinner>
+              <p>Calculating mark ...</p>
+            </div>
+            <div *ngIf="generateMark">
+              <aside class="top_result">
+                <h2>{{ resultData[0] }}</h2>
+              </aside>
+              <aside class="bottom_result">
+                <div>
+                  <p>
+                    Congratulations , you got <span>{{ resultData[1] }}</span
+                    >/{{ quizDetail.questions.length }}
+                  </p>
+                  <p>Good luck!</p>
+                </div>
+              </aside>
+            </div>
+          </section>
+        </article>
+      </section>
+    </div>
+  </div>
+</section>

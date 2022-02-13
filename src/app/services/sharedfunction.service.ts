@@ -26,14 +26,25 @@ export class SharedFunctionService {
   isUserAuth() {
     let id = sessionStorage.getItem('authKey');
     let currentURL = window.location.href.split('/')[3];
+    let showQuizURLLength = window.location.href.split('/').length;
+    let check = false;
+    if (id) check = true;
+    else check = false;
     if (id) {
       if (currentURL == 'login' || currentURL == 'register') {
         this.router.navigateByUrl('/');
       }
     } else {
-      if (currentURL == 'create_quiz' || currentURL == 'show_quiz') {
+      if (
+        currentURL == 'create_quiz' ||
+        (currentURL == 'show_quiz' && showQuizURLLength <= 5 && !check)
+      ) {
         this.router.navigateByUrl('/');
       }
     }
+  }
+  getBaseURL() {
+    let URL = window.location.href.split('/');
+    return URL[0] + '//' + URL[2] + '/';
   }
 }
