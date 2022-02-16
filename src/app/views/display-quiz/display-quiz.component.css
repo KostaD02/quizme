@@ -18,6 +18,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 10%;
+  grid-template-rows: 300px;
 }
 .displayForm .top .right h1 {
   text-align: center;
@@ -27,7 +28,7 @@ section {
 .displayForm .top .left img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .displayForm .top .right h1 span {
   color: #0082e6;
@@ -125,4 +126,161 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.alreadyAnswered,
+.notAvaliable {
+  padding: 20px;
+  width: 40%;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.alreadyAnswered h1 {
+  color: red;
+  font-weight: bold;
+}
+.early {
+  color: green;
+  font-weight: bold;
+}
+.late {
+  color: red;
+  font-weight: bold;
+}
+.notAvaliable span {
+  color: #0082e6;
+  font-weight: bold;
+}
+.alreadyAnswered p {
+  font-size: 20px;
+}
+
+.alreadyAnswered p i {
+  font-size: 30px;
+}
+
+.owner {
+  width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 20px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 30px;
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+.owner .top,
+.owner .top .left .makeSplit {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+}
+.owner .bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 50px;
+}
+.owner aside {
+  width: 100%;
+}
+.owner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.owner .quiz_right {
+  display: flex;
+  align-items: center;
+}
+
+.owner .quiz_right div {
+  height: min-content;
+}
+.activeColor {
+  color: #0082e6;
+}
+#headerText {
+  text-align: center;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+#headerQuestion {
+  text-align: center;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.scrollable {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+.center {
+  text-align: center;
+}
+.listStyle {
+  list-style: upper-alpha;
+}
+.correctAnswer {
+  color: green !important;
+  font-weight: bold;
+}
+.wider {
+  padding: 0px 20px;
+}
+table {
+  width: 100%;
+  max-height: 400px !important;
+  overflow-x: auto;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+form button {
+  float: right;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .displayForm {
+    width: 90% !important;
+    margin-top: 50px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+  .answered {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .displayForm {
+    width: 98% !important;
+    margin-top: 10px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding: 5px;
+  }
+  .generatQuestions .radio-group {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+  .displayForm .top {
+    grid-column-gap: 0%;
+    column-gap: 0%;
+  }
+  .contactInfo {
+    grid-gap: 5px;
+    gap: 5px;
+  }
 }

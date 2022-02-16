@@ -10,10 +10,10 @@ section .cards {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  row-gap: 50px;
+  row-gap: 350px !important;
   gap: 3.33%;
   padding: 50px 0px 150px;
-  height: 100vh;
+  height: 90vh;
   overflow-y: scroll;
 }
 
@@ -21,12 +21,18 @@ section .displayButtons {
   display: flex;
   justify-content: space-between;
 }
-
+.mat-card-image {
+  object-fit: contain;
+  height: 200px;
+}
+.card {
+  height: 100px;
+}
 section .centerText {
   justify-content: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .card {
     width: 90% !important;
   }

@@ -1,0 +1,41 @@
+section {
+  width: 70%;
+  height: 640px;
+  margin: 100px auto;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+  background-color: #f5f5f5;
+}
+
+section .left {
+  height: 100%;
+  width: 100%;
+  background-image: url("https://png.pngtree.com/png-vector/20210502/ourlarge/pngtree-quiz-png-transparent-background-png-image_3257718.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+section .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section .right div {
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  section {
+    max-height: 300px;
+    margin: 50px auto;
+    width: 80%;
+    overflow-y: scroll;
+  }
+}

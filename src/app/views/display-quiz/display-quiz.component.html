@@ -1,21 +1,212 @@
+<app-rotate-phone></app-rotate-phone>
 <section *ngIf="!loader">
   <app-loader></app-loader>
 </section>
-<section *ngIf="loader">
+<section *ngIf="loader" class="makeBigger">
   <div *ngIf="isEmpty">
     <p>There is no Quiz</p>
   </div>
   <div *ngIf="!isEmpty">
     <div *ngIf="isOwner">
-      <p>Owner</p>
+      <section class="owner">
+        <aside class="top">
+          <aside class="left">
+            <h3 id="headerText">Quiz detail</h3>
+            <div class="makeSplit">
+              <aside class="quiz_left">
+                <img
+                  (click)="viewFullImage()"
+                  [src]="quizDetail.quizInfo.imgSrc"
+                  alt=""
+                />
+              </aside>
+              <aside class="quiz_right">
+                <div>
+                  <form #myForm="ngForm">
+                    <mat-form-field class="full">
+                      <input
+                        matInput
+                        placeholder="Quiz name"
+                        [(ngModel)]="oldData.name"
+                        name="quiz_name"
+                        required
+                      />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Enter quiz active time</mat-label>
+                      <mat-date-range-input [rangePicker]="picker">
+                        <input
+                          required
+                          name="startDate"
+                          matStartDate
+                          placeholder="Start date"
+                          [(ngModel)]="oldData.startTime"
+                        />
+                        <input
+                          [(ngModel)]="oldData.endTime"
+                          required
+                          name="endDate"
+                          matEndDate
+                          placeholder="End date"
+                        />
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="picker"
+                      ></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                    <button
+                      (click)="update(myForm)"
+                      mat-raised-button
+                      color="warn"
+                    >
+                      Update
+                    </button>
+                  </form>
+                </div>
+                <!-- <div>
+                  <h1>
+                    Quiz name :
+                    <span class="activeColor">
+                      {{ quizDetail.quizInfo.quiz_name }}</span
+                    >
+                  </h1>
+                  <ul>
+                    <li><b>Quiz started : </b> {{ date[0] }}</li>
+                    <li><b>Quiz will end : </b> {{ date[1] }}</li>
+                  </ul>
+                </div> -->
+              </aside>
+            </div>
+          </aside>
+          <aside class="right">
+            <h3 id="headerText">Question with answer</h3>
+            <article class="scrollable">
+              <div
+                class="question-answer"
+                *ngFor="let question of quizDetail.questions; let i = index"
+              >
+                <hr />
+                <p id="headerQuestion">{{ question.question }}</p>
+                <ul class="listStyle">
+                  <li
+                    [ngClass]="{ correctAnswer: question.correctAnswer == 'A' }"
+                  >
+                    {{ question.answerA }}
+                  </li>
+                  <li
+                    [ngClass]="{ correctAnswer: question.correctAnswer == 'B' }"
+                  >
+                    {{ question.answerB }}
+                  </li>
+                  <li
+                    [ngClass]="{ correctAnswer: question.correctAnswer == 'C' }"
+                  >
+                    {{ question.answerC }}
+                  </li>
+                  <li
+                    [ngClass]="{ correctAnswer: question.correctAnswer == 'D' }"
+                  >
+                    {{ question.answerD }}
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </aside>
+        </aside>
+        <aside class="bottom">
+          <aside class="left">
+            <h3 id="headerText">Students answer talbe</h3>
+            <article>
+              <mat-form-field appearance="standard">
+                <mat-label>Filter</mat-label>
+                <input
+                  matInput
+                  (keyup)="applyFilter($event)"
+                  placeholder="Ex. Kosta"
+                  #input
+                />
+              </mat-form-field>
+              <table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8"
+                mat-table
+              >
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef>No.</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.position }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef>Student Name</th>
+                  <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                </ng-container>
+                <ng-container matColumnDef="lastname">
+                  <th mat-header-cell *matHeaderCellDef>Student Surename</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.lastname }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef>Student Email</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.email }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="mark">
+                  <th mat-header-cell *matHeaderCellDef>Student Mark</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.mark }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="answeres">
+                  <th mat-header-cell *matHeaderCellDef>Check Answers</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.answeres }}
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">
+                    No data matching the filter "{{ input.value }}"
+                  </td>
+                </tr>
+              </table>
+            </article>
+          </aside>
+          <aside class="right">
+            <!-- <h3 id="headerText">Statistics</h3> -->
+          </aside>
+        </aside>
+      </section>
     </div>
     <div *ngIf="!isOwner">
       <section *ngIf="available">
-        <p>Time passed</p>
+        <div class="notAvaliable">
+          <div *ngIf="state == 'early'">
+            <h1 class="early">You came early!</h1>
+            <p>
+              Quiz will start : <span>{{ date[0] }}</span>
+            </p>
+          </div>
+          <div *ngIf="state == 'late'">
+            <h1 class="late">You came late!</h1>
+            <p>
+              Quiz ended : <span>{{ date[1] }}</span>
+            </p>
+          </div>
+        </div>
       </section>
       <section *ngIf="!available">
-        <article *ngIf="alreadyAnswered">
-          <p>Already answered</p>
+        <article *ngIf="alreadyAnswered" class="alreadyAnswered">
+          <h1>Already answered !</h1>
+          <p>Maybe next Time <i class="fa-solid fa-face-frown"></i></p>
         </article>
         <article *ngIf="!alreadyAnswered && !result">
           <section class="displayForm">
@@ -40,7 +231,6 @@
                     <li><b>Be honest on answers</b></li>
                     <li><b>You can upload only once</b></li>
                   </ul>
-                  <p></p>
                 </div>
               </aside>
             </aside>

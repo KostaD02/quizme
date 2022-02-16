@@ -47,4 +47,16 @@ export class SharedFunctionService {
     let URL = window.location.href.split('/');
     return URL[0] + '//' + URL[2] + '/';
   }
+  viewImage(
+    src: string = 'https://bitsofco.de/content/images/2018/12/broken-1.png',
+    alt: string = 'Your image',
+    text: string = 'Your image'
+  ) {
+    Swal.fire({
+      title: 'Showing image!',
+      text: `${text}`,
+      imageUrl: `${src}`,
+      imageAlt: `${alt}`,
+    });
+  }
 }

@@ -30,6 +30,7 @@
   margin: 0;
   font-size: 20px;
   opacity: 0;
+  color: white !important;
 }
 
 .phone {
@@ -52,7 +53,7 @@
   opacity: 0;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 650px) {
   .overlay {
     display: block;
   }

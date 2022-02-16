@@ -59,6 +59,9 @@ export class CreatequizComponent implements OnInit {
     this.questions.removeAt(i);
   }
   submitPartOne(form: NgForm) {
+    if (this.image == '') {
+      this.image = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
+    }
     let partOne = {
       user_id: sessionStorage.getItem('authKey'),
       quiz_name: form.value.quiz_name,
