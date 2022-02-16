@@ -6,6 +6,7 @@ body {
   padding: 0px;
   overflow: hidden;
   font-family: "Montserrat", sans-serif !important;
+  overflow-y: auto;
 }
 *::-webkit-scrollbar-thumb {
   background-color: #2574a9;

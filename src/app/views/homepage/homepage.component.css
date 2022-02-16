@@ -1,7 +1,7 @@
 section {
   width: 70%;
-  height: 640px;
-  margin: 100px auto;
+  height: 500px;
+  margin: 20px auto;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -34,7 +34,7 @@ section .right div {
 @media (max-width: 768px) {
   section {
     max-height: 300px;
-    margin: 50px auto;
+    margin: 10px auto;
     width: 80%;
     overflow-y: scroll;
   }

@@ -88,9 +88,11 @@ export class DisplayQuizComponent implements OnInit {
         this.router.navigateByUrl('404');
         return;
       }
-      if (this.isAnswered()) {
-        this.alreadyAnswered = true;
-        return;
+      if (this.quizDetail.answeredQuiz) {
+        if (this.isAnswered()) {
+          this.alreadyAnswered = true;
+          return;
+        }
       }
       let state = this.isTimePassed(
         this.quizDetail.quizInfo.date[0],
@@ -109,7 +111,7 @@ export class DisplayQuizComponent implements OnInit {
         this.state = state;
         return;
       }
-    }, 1500);
+    }, 2000);
   }
   update(form: NgForm) {
     let data = form.value;
@@ -225,6 +227,7 @@ export class DisplayQuizComponent implements OnInit {
 
   isSameEmail(email: string) {
     let isSame = false;
+    if (!this.quizDetail.answeredQuiz) return false;
     this.quizDetail.answeredQuiz.forEach((element: any) => {
       if (element.email == email) {
         isSame = true;
